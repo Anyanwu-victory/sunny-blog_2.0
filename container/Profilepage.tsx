@@ -63,7 +63,7 @@ export default function ProfilePage() {
   })
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto  px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <Card className="mb-8">
           <CardContent className="p-6">

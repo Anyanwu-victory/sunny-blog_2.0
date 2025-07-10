@@ -44,8 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
       >
+        <div className=" min-w-full w-full">
+         <Navbar/>
+        </div>
         <Navbar/>
         {children}
         <Toaster />
