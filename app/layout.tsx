@@ -18,22 +18,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sunny Blog App 2.0",
   description: "A modern blog application built with Next.js 14, TypeScript, and Tailwind CSS.",
-  openGraph: {
-    title: "Sunny Blog App 2.0",
-    description: "A modern blog application built with Next.js 14, TypeScript, and Tailwind CSS.",
-    url: "https://sunny-blog-app.vercel.app",
-    siteName: "Sunny Blog App",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Sunny Blog App Open Graph Image",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
 };
 
 export default function RootLayout({
@@ -46,9 +30,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
       >
-        <div className=" min-w-full w-full">
-         <Navbar/>
-        </div>
         <Navbar/>
         {children}
         <Toaster />

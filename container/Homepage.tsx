@@ -9,7 +9,7 @@ const Homepage = () => {
       <HeroCarousel />
 
       <div className="min-h-screen bg-white md:px-[3rem]  ">
-        <div className="container mx-auto px-1 py-8">
+        <div className="container mx-auto px-3 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 py-12 lg:pl-[7rem] lg:pr-[3rem]">
               <BlogFeed />

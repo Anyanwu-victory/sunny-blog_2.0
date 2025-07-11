@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ChevronRight,Heart, MessageCircle, Bookmark, MoreHorizontal, Plus } from "lucide-react"
 import Link from "next/link"
 
-const tabs = ["For you", "Following", "Featured", "Popular", "Latest", "Topics"]
+const tabs = ["Feed", "Following", "Featured", "Popular", "Latest", "Topics"]
 
 const posts = [
   {
@@ -81,7 +81,7 @@ export function BlogFeed() {
     <div>
       {/* Navigation Tabs */}
       <div className="flex items-center  border-b border-gray-200 mb-3 ">
-        <div className="flex items-center space-x-4 overflow-x-auto scrollbar-hide" ref={tabListRef}>
+        <div className="flex items-center space-x-4 overflow-x-auto scrollbar-hidden " ref={tabListRef}>
 
         
         <Button variant="ghost" size="sm" className="p-2 flex-shrink-0">
@@ -91,7 +91,7 @@ export function BlogFeed() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`pb-4 px-4 w-10 text-sm font-light
+            className={`pb-4 px-2 w-20 text-sm font-light
                  border-b-2 transition-colors md:font-medium lg:font-medium ${
               activeTab === tab
                 ? "border-gray-900 text-gray-900"
@@ -150,15 +150,15 @@ export function BlogFeed() {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <button className="flex items-center space-x-1 text-gray-500 hover:text-gray-700">
+                    <button className="items-center  space-x-1 text-gray-500 hover:text-gray-700 hidden md:flex lg:flex ">
                       <Heart className="h-4 w-4" />
                       <span className="text-sm">{post.claps}</span>
                     </button>
-                    <button className="flex items-center space-x-1 text-gray-500 hover:text-gray-700">
+                    <button className="hidden items-center space-x-1 text-gray-500 hover:text-gray-700 md:flex lg:flex">
                       <MessageCircle className="h-4 w-4" />
                       <span className="text-sm">{post.comments}</span>
                     </button>
-                    <button className="text-gray-500 hover:text-gray-700">
+                    <button className="hidden text-gray-500 hover:text-gray-700 md:flex lg:flex">
                       <Bookmark className="h-4 w-4" />
                     </button>
                     <button className="text-gray-500 hover:text-gray-700">
@@ -168,11 +168,11 @@ export function BlogFeed() {
                 </div>
               </div>
 
-              <div className="flex-shrink-0 w-28 h-28">
+              <div className="flex-shrink-0 w-20 h-20 md:w-33 md:h-33">
                 <img
                   src={post.image || "/placeholder.svg"}
                   alt={post.title}
-                  className="w-28 h-28 object-cover rounded"
+                  className="h-20 w-20 md:w-33 md:h-30 object-cover rounded lg:w-33 lg:h-30"
                 />
               </div>
             </div>
