@@ -1,12 +1,12 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent,CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { BookOpen, Users, Edit, Heart, MessageCircle } from "lucide-react"
+import {Users, Edit, Heart, MessageCircle , MoreHorizontal} from "lucide-react"
 import { useState } from "react"
 
 // Mock user data
@@ -66,9 +66,17 @@ export default function ProfilePage() {
     <div className="container mx-auto  px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <Card className="mb-8">
+            <CardHeader className="flex justify-end items-end">
+                <CardTitle>
+                    <Button> 
+                    <MoreHorizontal className="w-6 h-4"/>
+                    </Button>
+                </CardTitle>
+            </CardHeader>
+
           <CardContent className="p-6">
             <div className="flex items-start space-x-6">
-              <Avatar className="h-24 w-24">
+              <Avatar className="h-14 w-14 md:h-24 md:w-24">
                 <AvatarImage src={mockUser.avatar || "/placeholder.svg"} />
                 <AvatarFallback className="text-2xl">JD</AvatarFallback>
               </Avatar>
@@ -79,16 +87,28 @@ export default function ProfilePage() {
                     <h1 className="text-2xl font-bold">{mockUser.name}</h1>
                     <p className="text-gray-600">{mockUser.email}</p>
                   </div>
-                  <Button variant="outline" onClick={() => setIsEditing(!isEditing)}>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* About user section */}
+        <Card className="mb-8">
+           <CardHeader className="p-6 flex items-center justify-between ">
+            <CardTitle> About</CardTitle>
+              <Button variant="outline" onClick={() => setIsEditing(!isEditing)}>
                     <Edit className="h-4 w-4 mr-2" />
                     {isEditing ? "Cancel" : "Edit Profile"}
                   </Button>
-                </div>
+           </CardHeader>
 
+           <CardContent>
+           <div className="flex-1">
                 {isEditing ? (
-                  <div className="space-y-4">
+                  <div className="space-y-4 text-center">
                     <div>
-                      <Label htmlFor="about">About</Label>
+                      {/* <Label htmlFor="about">About</Label> */}
                       <Textarea
                         id="about"
                         value={profileData.about}
@@ -104,19 +124,15 @@ export default function ProfilePage() {
                   <p className="text-gray-700">{profileData.about}</p>
                 )}
 
-                <div className="flex items-center space-x-6 mt-4">
-                  <div className="flex items-center space-x-2">
-                    <BookOpen className="h-4 w-4 text-gray-500" />
-                    <span className="text-sm text-gray-600">{userPosts.length} Posts</span>
-                  </div>
+<div className="flex items-center space-x-6 mt-4">
                   <div className="flex items-center space-x-2">
                     <Users className="h-4 w-4 text-gray-500" />
                     <span className="text-sm text-gray-600">{followedAuthors.length} Following</span>
                   </div>
                 </div>
-              </div>
-            </div>
-          </CardContent>
+                
+            </div> 
+           </CardContent>
         </Card>
 
         <Tabs defaultValue="posts" className="w-full">

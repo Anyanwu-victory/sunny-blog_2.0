@@ -1,0 +1,40 @@
+if (isMobile) {
+  return (
+    <>
+      <Button
+        variant="ghost"
+        onClick={() => setIsOpen(true)}
+        className="p-0"
+      >
+        <Search className="w-6 h-6" />
+      </Button>
+
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="w-full h-full max-w-full p-0 m-0 rounded-none">
+          <div className="flex items-center p-4 border-b">
+            <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)} className="mr-2">
+              <X className="h-5 w-5" />
+            </Button>
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                ref={dialogInputRef}
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleMobileSearch()}
+                placeholder="Search..."
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+                autoFocus
+              />
+            </div>
+          </div>
+
+          <div className="overflow-y-auto flex-1 p-4">
+            {/* Result rendering here (reuse your JSX) */}
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  )
+}

@@ -68,7 +68,7 @@ const posts = [
 ]
 
 export function BlogFeed() {
-  const [activeTab, setActiveTab] = useState("For you")
+  const [activeTab, setActiveTab] = useState("Feed")
   const tabListRef = useRef<HTMLDivElement>(null)
 
   const scrollTabsRight = () => {   
@@ -81,9 +81,7 @@ export function BlogFeed() {
     <div>
       {/* Navigation Tabs */}
       <div className="flex items-center  border-b border-gray-200 mb-3 ">
-        <div className="flex items-center space-x-4 overflow-x-auto scrollbar-hidden " ref={tabListRef}>
-
-        
+        <div className="flex items-center space-x-4 overflow-x-auto overflow-hidden scrollbar-hidden " ref={tabListRef}>
         <Button variant="ghost" size="sm" className="p-2 flex-shrink-0">
           <Plus className="h-4 w-4" />
         </Button>
@@ -110,8 +108,6 @@ export function BlogFeed() {
         className="h-8 w-8 text-gray-500 flex lg:hidden
           " />
         </button>
-    
-
       </div>
 
       {/* Posts Feed */}

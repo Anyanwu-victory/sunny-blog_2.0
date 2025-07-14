@@ -47,7 +47,7 @@ const searchData = {
     {
       id: 3,
       name: "BrightDigit",
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "B",
       description: "Digital marketing insights",
     },
   ],
@@ -192,7 +192,12 @@ export function SearchDropdown({ isMobile = false }: SearchDropdownProps) {
   }
 
   return (
-    <div ref={searchRef} className="relative">
+    <div
+    ref={searchRef}
+    onMouseEnter={() => setIsOpen(true)}// open search dropdown on mouse enter
+    onMouseLeave={() => setIsOpen(false)} // close search dropdown on mouse leave
+    className="relative"
+    >
       <form onSubmit={handleSearch} className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
         <input
@@ -200,16 +205,18 @@ export function SearchDropdown({ isMobile = false }: SearchDropdownProps) {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onFocus={() => setIsOpen(true)}
+          onFocus={() => setIsOpen(true)} // open dropdown on focus
           placeholder="Search..."
           className="w-full max-w-sm pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
       </form>
 
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg 
+        shadow-lg z-[99999] max-h-96 overflow-y-auto">
           {searchTerm ? (
             <div className="p-4">
+              {/* filtered results from the search */}
               {filteredResults.people.length > 0 && (
                 <div className="mb-6">
                   <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">PEOPLE</h3>
@@ -276,7 +283,7 @@ export function SearchDropdown({ isMobile = false }: SearchDropdownProps) {
               )}
             </div>
           ) : (
-            <div className="p-4 text-center text-gray-500">
+            <div className=" absolute p-4 text-center text-gray-500">
               Start typing to search for people, publications, and topics
             </div>
           )}

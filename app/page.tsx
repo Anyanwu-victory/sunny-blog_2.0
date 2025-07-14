@@ -3,7 +3,7 @@ import Homepage from "@/container/Homepage";
 
 export default function Home() {
   return (
-    <div className="max-w-full w-full">
+    <div className="max-w-full absolute w-full">
       <main className="w-full ">
         <Homepage />
       </main>

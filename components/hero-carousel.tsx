@@ -55,13 +55,13 @@ export function HeroCarousel() {
   }
 
   return (
-    <div className="relative h-[500px] overflow-hidden w-full">
+    <div className="relative h-[500px] overflow-hidden z-0 w-full pointer-events-auto">
       <div
         className="flex transition-transform duration-500 ease-in-out h-full"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {featuredPosts.map((post) => (
-          <div key={post.id} className="w-full flex-shrink-0 relative">
+          <div key={post.id} className="w-full flex-shrink-0 relative z-0 ">
             <div className="h-full bg-cover bg-center" style={{ backgroundImage: `url(${post.image})` }}>
               <div className="absolute inset-0 bg-black/50" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -69,7 +69,7 @@ export function HeroCarousel() {
                   <Card className="max-w-2xl mx-auto bg-white/95 backdrop-blur">
                     <CardContent className="p-8">
                       <div className="flex items-center space-x-4 text-sm text-gray-600 mb-4">
-                        <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full">{post.category}</span>
+                        {/* <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full">{post.category}</span> */}
                         <div className="flex items-center space-x-1">
                           <User className="h-4 w-4" />
                           <span>{post.author}</span>
